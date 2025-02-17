@@ -10,7 +10,7 @@ def JeweleryCSVFixer(filepath):
     #Open and parse the CSV into variable named "CSV_data"
     with open(filepath, newline='') as CSV_file:
         CSV_data = list(csv.reader(CSV_file))
-        print("File found and opened")
+        #print("File found and opened")
 
         #Set up array for the new data
         new_data_rows = []
@@ -79,19 +79,19 @@ def JeweleryCSVFixer(filepath):
 
                 #If it didn't fit any of these keywords, leave Type as "Jewelry" and print it to tell us what wasn't caught by the search
                 else:
-                    print(Jewelery_type_string)
+                    print("Couldn't match this row: ", row, filepath)
     #########################################
 
     #Make a new file name
     output_file_path = filepath[:-4] + "_fixed" + filepath[-4:]
 
     #Last chance to stop it from making a file
-    print("Algorithm done, press ENTER to confirm that you want to change the file " + output_file_path)
-    input()
-    CSV_file.close()
+    #print("Algorithm done, press ENTER to confirm that you want to change the file " + output_file_path)
+    #input()
+    #CSV_file.close()
 
     #If user hits 'Enter' then finish up by writing the file
-    print('Old file closed, writing to new file')
+    #print('Old file closed, writing to new file')
     with open(output_file_path, 'w', newline='') as CSV_file:
         finisher = csv.writer(CSV_file, dialect = "excel", delimiter=',')
         for i in new_data_rows:
